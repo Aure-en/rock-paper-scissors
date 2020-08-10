@@ -51,7 +51,6 @@ function computerPlay() {
 
 }
 
-//Says who won
 function outcome(playerSelection, computerSelection) {
 
     if (playerSelection == computerSelection) {
@@ -91,6 +90,7 @@ function outcome(playerSelection, computerSelection) {
 
 }
 
+//Outcome (computer POV)
 function computerOutcome(outcome) {
     if (outcome == "TIE") return "TIE";
     if (outcome == "LOSE") return "WIN";
@@ -197,6 +197,7 @@ function gameEnd(checkEnd) {
 
     if (checkEnd) {
         choices.removeEventListener("click", playRound);
+        choices.removeEventListener("keydown", keyboardPlay)
         displayEnd(checkEnd);
     }
 }
@@ -205,8 +206,8 @@ function displayEnd(checkEnd) {
 
     let replay = `<br>WOULD YOU LIKE TO PLAY AGAIN ?
     <ul>
-        <li>SURE, THIS IS FUN.</li>
-        <li>NO, I'D RATHER MINDLESSLY STARE AT MY SCREEN.</li>
+        <li tabindex='4'>SURE, THIS IS FUN.</li>
+        <li tabindex='5'>NO, I'D RATHER MINDLESSLY STARE AT MY SCREEN.</li>
     </ul>`
 
     if (checkEnd == "VICTORY") {
@@ -219,7 +220,11 @@ function displayEnd(checkEnd) {
     }
 
 
-    let replayChoices = document.querySelectorAll('.result ul li');
+    //Navigation with keyboard arrows / tabs
+    let replayChoices = document.querySelector('.result ul');
+    replayChoices.firstElementChild.focus();
+    replayChoices.addEventListener("keydown", keyboardPlay);
+    
 
 }
 
@@ -247,11 +252,50 @@ function restart() {
 
     //Allow choices again
     choices.addEventListener("click", playRound)
+    choices.addEventListener("keydown", keyboardPlay)
     
 }
 
-/*Game*/
+/*Reset*/
+document.querySelector(".reset").addEventListener("click", restart);
+
+/*Keyboard Play*/
+
+function keyboardPlay(event) {
+
+    if (event.code == 'ArrowUp') {
+        if (event.target == event.target.parentNode.firstElementChild) return;
+        event.target.previousElementSibling.focus();
+    }
+
+    if (event.code == 'ArrowDown') {
+        if (event.target == event.target.parentNode.lastElementChild) return;
+        event.target.nextElementSibling.focus();
+    }
+
+    if (event.code == "Space" || event.code == "Enter") {
+
+        if (event.target.parentNode == choices) {
+            playRound(event);
+        }
+
+        else {
+
+            let replayChoices = document.querySelector('.result ul');
+            
+            if (event.target == replayChoices.firstElementChild) restart();
+            else return;
+            
+        }
+
+    }
+
+    if (event.target == event.target.parentNode.lastElementChild && event.code == 'Tab') {
+        event.target.parentNode.firstElementChild.focus();
+        event.preventDefault();
+    }
+
+}
+
 
 restart();
-
-document.querySelector(".reset").addEventListener("click", restart);

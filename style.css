@@ -201,7 +201,9 @@ main {
 	margin-left: 25px;
 }
 
-.result ul li:hover {
+.result ul li:hover,
+.result ul li:focus {
+	outline: none;
 	margin-left: 0;
 	-webkit-animation: blink-animation 2s; /* Safari 4+ */
   	-moz-animation: blink-animation 2s; /* Fx 5+ */
@@ -233,10 +235,8 @@ main {
 	}
 }
 
-
-
-
-.result ul li:hover:before {
+.result ul li:hover:before,
+.result ul li:focus:before {
 	content: '⯈ ';
 	display: inline-block;
 	width: 25px;
@@ -264,12 +264,15 @@ nav .reset {
 	
 }
 
+nav li:focus,
+nav .reset:focus,
 nav li:hover,
 nav .reset:hover {
 	background-color: #5e5e5e;
 	width: 90px;
 	margin-left: -20px;
 	letter-spacing: 3px;
+	outline: none;
 }
 
 nav .reset:hover {
