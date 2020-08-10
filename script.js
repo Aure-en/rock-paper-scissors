@@ -294,5 +294,16 @@ function changeFocus(event) {
     event.target.focus();
 }
 
+//First ArrowDown / Enter / Space gives focus to choices.
+window.addEventListener("keydown", function(event) {
+
+    console.log(document.activeElement);
+
+    if (document.activeElement == document.querySelector('body') && (event.code == 'Enter' || event.code == 'Space' || event.code == 'Tab' || event.code == 'ArrowDown')) {
+        choices.firstElementChild.focus();
+    }
+
+})
+
 
 restart();
