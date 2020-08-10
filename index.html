@@ -4,78 +4,60 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
 
-    <script>
+    <div class="bookmark-shape"><h1><span>Let's play</span>ROCK - PAPER - SCISSORS</h1></div>
 
-        function computerPlay() {
+    <div class="center">
 
-            let number = Math.floor(Math.random() * 3);
-            
-            switch (number) {
-                case 0:
-                return 'rock';
+        <nav>
 
-                case 1:
-                return 'paper';
+            <ul class="choices">
+                <li>ROCK</li>
+                <li>PAPER</li>
+                <li>SCISS.</li>
+            </ul>
 
-                case 2:
-                return 'scissors';
-            }
+            <div class="reset">RESET</div>
 
-        }
+        </nav>
 
-        function playRound(playerSelection, computerSelection) {
-            
-            if (playerSelection == computerSelection) {
-                return `It's a tie: you both chose ${playerSelection}`;
-            }
+        <main>
 
-            switch (playerSelection) {
-                case 'rock':
-                    if(computerSelection == 'paper') {
-                        return 'You lose: paper beats rock.'
-                    }
+            <div class="player">
 
-                    if (computerSelection == 'scissors') {
-                        return 'You win: rock beats scissors';
-                    }
+                <div class="image-container"><img class="image-play" src=""></div>
+                <ul class="hp-container">
+                    <li class="hp"></li>
+                    <li class="hp"></li>
+                    <li class="hp"></li>
+                </ul>
+                <div class="play"></div>
 
+            </div>
 
-                case 'paper':
-                    if(computerSelection == 'scissors') {
-                        return 'You lose: scissors beat paper.'
-                    }
+            <div class="computer">
 
-                    if (computerSelection == 'rock') {
-                        return 'You win: paper beats rocks';
-                    }
+                <div class="image-container"><img class="image-play" src=""></div>
+                <ul class="hp-container">
+                    <li class="hp"></li>
+                    <li class="hp"></li>
+                    <li class="hp"></li>
+                </ul>
+                <div class="play"></div>
 
-                case 'scissors':
-                    if(computerSelection == 'rock') {
-                        return 'You lose: rock beats scissors.'
-                    }
+            </div>
 
-                    if (computerSelection == 'paper') {
-                        return 'You win: scissors beat paper';
-                    }
+            <div class="result">WELCOME TO ROCK - PAPER - SCISSORS.<br> CHOOSE A PLAY TO START.</div>
 
-            }
+        </main>
 
-        }
-
-        function game() {
-            for (let i = 0 ; i < 5 ; i++) {
-                alert(playRound(prompt("What is your selection for this round?", "").toLowerCase(), computerPlay()));
-            }
-        }
-
-        game();
-        
-    
-    </script>
+    </div>
 
 </body>
 
