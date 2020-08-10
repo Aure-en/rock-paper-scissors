@@ -198,6 +198,7 @@ function gameEnd(checkEnd) {
     if (checkEnd) {
         choices.removeEventListener("click", playRound);
         choices.removeEventListener("keydown", keyboardPlay)
+        choices.removeEventListener("mouseover", changeFocus);
         displayEnd(checkEnd);
     }
 }
@@ -224,7 +225,8 @@ function displayEnd(checkEnd) {
     let replayChoices = document.querySelector('.result ul');
     replayChoices.firstElementChild.focus();
     replayChoices.addEventListener("keydown", keyboardPlay);
-    
+    replayChoices.firstElementChild.addEventListener("click", restart);
+    replayChoices.addEventListener("mouseover", changeFocus);
 
 }
 
@@ -253,6 +255,7 @@ function restart() {
     //Allow choices again
     choices.addEventListener("click", playRound)
     choices.addEventListener("keydown", keyboardPlay)
+    choices.addEventListener("mouseover", changeFocus);
     
 }
 
@@ -295,6 +298,13 @@ function keyboardPlay(event) {
         event.preventDefault();
     }
 
+}
+
+//Remove focus from a previous element if I mouseover another element.
+function changeFocus(event) {
+    if (event.target == document.activeElement) return ;
+    document.activeElement.blur();
+    event.target.focus();
 }
 
 
