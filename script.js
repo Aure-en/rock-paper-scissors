@@ -24,7 +24,7 @@ function playRound(event) {
     computerSelection = computerPlay();
 
     displayPicture(playerSelection, computerSelection, outcome(playerSelection, computerSelection));
-    result.innerHTML = displayOutcome(playerSelection, computerSelection);
+    result.innerHTML = displayOutcome(playerSelection, computerSelection, outcome(playerSelection, computerSelection));
     displayHP(reduceHP(outcome(playerSelection, computerSelection)));
 
     gameEnd(checkEnd(playerHPCount, computerHPCount));
@@ -114,42 +114,29 @@ function displayPicture(playerSelection, computerSelection) {
 }
 
 //Change result message to display the outcome
-function displayOutcome(playerSelection, computerSelection) {
+function displayOutcome(playerSelection, computerSelection, outcome) {
     
-    if (playerSelection == computerSelection) {
-        return `It's a tie. <br> you both chose ${playerSelection}.`.toUpperCase();
+    if (outcome == "TIE") {
+        return `It's a tie. <br> You both chose ${playerSelection}.`.toUpperCase();
     }
 
-    switch (playerSelection) {
-        case 'rock':
-            if(computerSelection == 'paper') {
-                return 'You lose. <br> Paper beats rock.'.toUpperCase();
-            }
+    if (outcome == "LOSE") {
 
-            if (computerSelection == 'scissors') {
-                return 'You win. <br> Rock beats scissors.'.toUpperCase();;
-            }
+        if (computerSelection == 'scissors') {
+            return `You lose. <br> ${computerSelection} beat ${playerSelection}.`.toUpperCase();
+        }
 
-
-        case 'paper':
-            if(computerSelection == 'scissors') {
-                return 'You lose. <br> Scissors beat paper.'.toUpperCase();
-            }
-
-            if (computerSelection == 'rock') {
-                return 'You win. <br> Paper beats rocks.'.toUpperCase();
-            }
-
-        case 'scissors':
-            if(computerSelection == 'rock') {
-                return 'You lose. <br> Rock beats scissors.'.toUpperCase();
-            }
-
-            if (computerSelection == 'paper') {
-                return 'You win. <br> Scissors beat paper.'.toUpperCase();
-            }
-
+        return `You lose. <br> ${computerSelection} beats ${playerSelection}.`.toUpperCase();
     }
+
+    if (outcome == "WIN") {
+
+        if (playerSelection == 'scissors') {
+            return `You win. <br> ${playerSelection} beat ${computerSelection}.`.toUpperCase();
+        }
+
+        return `You win. <br> ${playerSelection} beats ${computerSelection}.`.toUpperCase();
+    }    
 }
 
 function reduceHP(outcome) {

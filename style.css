@@ -97,7 +97,7 @@ body {
 }
 
 
-/*TITLE*/
+/* TITLE */
 
 .bookmark-shape {
 	border: 30px solid #2e2e2e;
@@ -155,7 +155,6 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
 }
 
 .image-container img {
@@ -311,7 +310,7 @@ nav .reset {
 	}
 
 	.result {
-		font-size: 0.7em;
+		font-size: 0.8em;
 	}
 
 	/*Nav*/
