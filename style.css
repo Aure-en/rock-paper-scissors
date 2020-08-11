@@ -96,7 +96,6 @@ body {
 	display: flex;
 }
 
-
 /* TITLE */
 
 .bookmark-shape {
@@ -238,6 +237,7 @@ main {
 .result ul li:hover:before,
 .result ul li:focus:before {
 	content: '⯈ ';
+	font-family: 'Arial', Verdana, Geneva, Tahoma, sans-serif;
 	display: inline-block;
 	width: 25px;
 }
@@ -283,7 +283,7 @@ nav .reset {
 	background-color: #000;
 }
 
-/*Tablets*/
+/*TABLETS*/
 @media only screen and (max-device-width: 768px) {
 
 
@@ -348,9 +348,11 @@ nav .reset {
 
 }
 
-/*Mobiles*/
+/*MOBILES*/
 
 @media only screen and (max-device-width: 425px) {
+
+	/*Main*/
 
 	main {
 		width: 90vw;
@@ -359,20 +361,70 @@ nav .reset {
 	}
 
 	.bookmark-shape {
-		width: 300px;
+		width: 80vw;
 		left: 0;
-	}
-
-	nav .choices li {
-		width: 85px;
-		margin: 0.4em;
-		padding: 0.5em 0;
-		
 	}
 
 	.hp-container {
 		width: 120px;
 		height: 10px;
+	}
+
+	/*Nav*/
+
+	nav .choices li {
+		width: 25vw;
+		margin: 2vw;
+		padding: 0.5em 0;
+		
+	}
+
+}
+
+@media only screen and (max-device-width: 670px) and (orientation: landscape) {
+
+	/*Main*/
+
+	main {
+		height: 80vh;
+		grid-template-rows: 1fr 30%;
+	}
+
+	.bookmark-shape {
+		display: none;
+	}
+
+	.center {
+		flex-direction: row;
+	}
+
+	/*Nav*/
+
+	.choices {
+		display: block;
+	}
+
+	nav {
+		margin: 0;
+	}
+
+	nav li {
+		margin: 0 0 2vh 0;
+	}
+
+	nav li:focus,
+	nav .reset:focus,
+	nav li:hover,
+	nav .reset:hover {
+		background-color: #5e5e5e;
+		transform: initial;
+		width: 70px;
+		margin: 0 0 2vh 0;
+		
+	}
+
+	.result {
+		font-size: 0.6em;
 	}
 
 }
