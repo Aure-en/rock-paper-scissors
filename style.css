@@ -381,7 +381,7 @@ nav .reset {
 
 }
 
-@media only screen and (max-device-width: 480px) and (orientation: landscape) {
+@media only screen and (max-device-height: 500px) and (orientation: landscape) {
 
 	/*Main*/
 
