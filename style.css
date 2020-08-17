@@ -398,6 +398,11 @@ nav .reset {
 		flex-direction: row;
 	}
 
+	.image-container {
+		width: 60%;
+		height: 65%;
+	}
+
 	/*Nav*/
 
 	.choices {
